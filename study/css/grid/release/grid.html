@@ -174,7 +174,7 @@
 <p>水平区域-行、垂直区域-列</p>
 <h3 id="23-单元格">2.3 单元格 </h3>
 <p>行列交叉区域（网格线之间区域），为单元格-cell；<strong>n</strong>行<strong>m</strong>列产生<strong>n*m</strong>个单元格；3*3 产生 9 个单元格</p>
-<p><img src="1_bg2019032503.png" alt="alt text"></p>
+<p><img src="resource%5C1_bg2019032503.png" alt="alt text"></p>
 <h3 id="24-网格线">2.4 网格线 </h3>
 <p>划分网格的线，称为"网格线"（grid line）。水平网格线划分出行，垂直网格线划分出列。<br>
 <em>n</em>行划分出<em>n+1</em>根水平网格线</p>
@@ -267,15 +267,25 @@ x{
 3 6
 </code></pre><p>除了<em>row</em>与<em>column</em>,还有<strong>row dense</strong>、<strong>column dense</strong>，当指定了某些项之后，剩下的项是否需要尽可能的补齐留白。意味着<em>指定规则&gt;剩余规则</em></p>
 <h3 id="312-justify-items-align-items-place-items-属性">3.12 justify-items、align-items、place-items 属性 </h3>
-<p>对<strong>容器</strong>使用，类似于 flex 规则。 - 容器内的所有单元格，在网格中的表现<br>
+<p>对<strong>容器</strong>使用，类似于 flex 规则。<br>
+容器内的单元格，在<em>项目整体</em>中的表现；<br>
+大白话，它是设置<em>项目整体</em>与<em>单个项目</em>之间的关系<br>
 <code>stretch</code> 拉伸，默认值，占满单元格宽度</p>
+<blockquote>
+<p><em>它会影响<code>grid-template-*</code>给定的宽高</em></p>
+</blockquote>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>.container {
   justify-items: start | end | center | stretch; // 水平位置
   align-items: start | end | center | stretch; // 垂直位置
   place-items: &lt;align-items&gt; &lt;justify-items&gt;; // 上述的合写，忽略第二个值，则与第一个相同
 }
 </code></pre><h3 id="313-justify-content-align-content-place-content-属性">3.13 justify-content、align-content、place-content 属性 </h3>
-<p>对<strong>容器</strong>使用，决定容器内的单元格在容器中的位置，类似于 Flex。</p>
+<p>对<strong>容器</strong>使用，类似于 Flex.<br>
+决定容器内的<em>所有单元格（整体项目）<em>在</em>容器</em>中的位置；<br>
+大白话，它是设置<em>容器</em>与<em>项目整体</em>之间的关系；把‘所有项目’视为一个整体，调节它在容器中的表现；<em>前提是这个整体没有将‘容器’填满</em></p>
+<blockquote>
+<p>如果 grid-template-columns 设置 1fr 等自动拉伸填满整个容器的话，是观察不到效果的。</p>
+</blockquote>
 <ul>
 <li><code>space-around</code> 每个项目两侧间隔相加后相等(项目之间的间隔比项目与容器边框的间隔大一倍) .例：left-项目-right left-项目-right。 around-环绕</li>
 <li><code>space-between</code> 项与项之间的间隔相等(项目与容器边框之间没有间隔)。例：间隔-项目-间隔-项目-间隔。between-在 x 之间</li>
