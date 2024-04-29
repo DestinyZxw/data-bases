@@ -1,0 +1,372 @@
+<!DOCTYPE html><html><head>
+      <title>grid</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\bx_zxw\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.13\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="grid">Grid </h1>
+
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#grid" class="md-toc-link"><p>Grid</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#一概述" class="md-toc-link">
+            <p>一，概述</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#二基本概念" class="md-toc-link"><p>二，基本概念</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#21-容器-项目" class="md-toc-link">
+            <p>2.1 容器、项目</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#22-行-列" class="md-toc-link">
+            <p>2.2 行、列</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#23-单元格" class="md-toc-link">
+            <p>2.3 单元格</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#24-网格线" class="md-toc-link">
+            <p>2.4 网格线</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#三-容器属性" class="md-toc-link"><p>三, 容器属性</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#31display" class="md-toc-link">
+            <p>3.1，display</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#32grid-template-columns-grid-template-rows" class="md-toc-link">
+            <p>3.2，grid-template-columns、grid-template-rows</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#321-repeat" class="md-toc-link">
+            <p>3.2.1 repeat()</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#322-auto-fill-关键字" class="md-toc-link">
+            <p>3.2.2 auto-fill 关键字</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#323-fr-关键字" class="md-toc-link">
+            <p>3.2.3 fr 关键字</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#324-minmax-生成长度范围" class="md-toc-link">
+            <p>3.2.4 minmax() 生成长度范围</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#325-auto-关键字" class="md-toc-link">
+            <p>3.2.5 auto 关键字</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#326-网格线的名称" class="md-toc-link">
+            <p>3.2.6 网格线的名称</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#39-grid-row-gap-grid-column-gap-grid-gap-属性" class="md-toc-link">
+            <p>3.9 grid-row-gap、grid-column-gap、grid-gap 属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#310-grid-template-areas" class="md-toc-link">
+            <p>3.10 grid-template-areas</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#311-grid-auto-flow-属性" class="md-toc-link">
+            <p>3.11 grid-auto-flow 属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#312-justify-items-align-items-place-items-属性" class="md-toc-link">
+            <p>3.12 justify-items、align-items、place-items 属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#313-justify-content-align-content-place-content-属性" class="md-toc-link">
+            <p>3.13 justify-content、align-content、place-content 属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#314-grid-auto-columns-grid-auto-rows-属性" class="md-toc-link">
+            <p>3.14 grid-auto-columns、grid-auto-rows 属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#315-grid-template-grid-属性" class="md-toc-link">
+            <p>3.15 grid-template、grid 属性</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#四项目属性" class="md-toc-link"><p>四，项目属性</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#41-grid-column-start-grid-column-end-grid-row-start-grid-row-end-属性" class="md-toc-link">
+            <p>4.1 grid-column-start、grid-column-end、grid-row-start、grid-row-end 属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#42-grid-column-grid-row-属性" class="md-toc-link">
+            <p>4.2 grid-column、grid-row 属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#43-grid-area-属性" class="md-toc-link">
+            <p>4.3 grid-area 属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#44-justify-self-align-self-place-self-属性" class="md-toc-link">
+            <p>4.4 justify-self、align-self、place-self 属性</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#五实战举例" class="md-toc-link">
+            <p>五，实战举例</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+<h2 id="一概述">一，概述 </h2>
+<p><strong>Flex</strong>布局是轴线布局，只能指定"项目"针对轴线的位置，可以看作是一维布局。<strong>Grid</strong>布局则是将容器划分成"行"和"列"，产生单元格，然后指定"项目所在"的单元格，可以看作是二维布局</p>
+<h2 id="二基本概念">二，基本概念 </h2>
+<h3 id="21-容器-项目">2.1 容器、项目 </h3>
+<p><em>容器</em>网格布局的区域，<em>项目</em>容器内部采用网格定位的子元素</p>
+<h3 id="22-行-列">2.2 行、列 </h3>
+<p>水平区域-行、垂直区域-列</p>
+<h3 id="23-单元格">2.3 单元格 </h3>
+<p>行列交叉区域（网格线之间区域），为单元格-cell；<strong>n</strong>行<strong>m</strong>列产生<strong>n*m</strong>个单元格；3*3 产生 9 个单元格</p>
+<p><img src="1_bg2019032503.png" alt="alt text"></p>
+<h3 id="24-网格线">2.4 网格线 </h3>
+<p>划分网格的线，称为"网格线"（grid line）。水平网格线划分出行，垂直网格线划分出列。<br>
+<em>n</em>行划分出<em>n+1</em>根水平网格线</p>
+<h2 id="三-容器属性">三, 容器属性 </h2>
+<p>Grid 布局的属性分成<strong>容器属性</strong>、<strong>项目属性</strong></p>
+<h3 id="31display">3.1，display </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>display: grid           // 指定容器布局
+display: inline-grid;   // 指定容器为行内元素&amp;网格
+</code></pre><h3 id="32grid-template-columns-grid-template-rows">3.2，grid-template-columns、grid-template-rows </h3>
+<p>定义<strong>行列的数量及宽高</strong>，可使用百分比</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px; // 每列宽度x，3列
+  grid-template-rows: 100px 100px 100px;    // 每行高度x，3行
+  grid-template-rows: 33.33% 33.33% 33.33%;
+}
+</code></pre><h3 id="321-repeat">3.2.1 repeat() </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>    grid-template-columns: repeat(2, 100px 20px 80px); // 重复某种模式  每3列，循环两次
+</code></pre><h3 id="322-auto-fill-关键字">3.2.2 auto-fill 关键字 </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px); // 自动填充
+}
+</code></pre><blockquote>
+<p>auto-fit 自动扩大单元格宽度，类似于 auto-fill</p>
+</blockquote>
+<h3 id="323-fr-关键字">3.2.3 fr 关键字 </h3>
+<p>fraction-片段，表示比例关系。如果两列的宽度分别为 1fr 和 2fr，就表示后者是前者的两倍</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 150px 1fr 2fr; // 结合固定长度单位，容易计算出某个值
+}
+</code></pre><h3 id="324-minmax-生成长度范围">3.2.4 minmax() 生成长度范围 </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>grid-template-columns: 1fr 1fr minmax(100px, 1fr); // 最小100，最大不超过1fr
+</code></pre><h3 id="325-auto-关键字">3.2.5 auto 关键字 </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>grid-template-columns:  100px auto 100px;
+</code></pre><h3 id="326-网格线的名称">3.2.6 网格线的名称 </h3>
+<blockquote>
+<p>这是网格线的名称，这是网格线的名称，这是网格线的名称</p>
+</blockquote>
+<p>网格线排序还能反向编号排序，例如从左至右为 1,2,3,4 反向排序为-4，-3，-2，-1</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.container {
+  display: grid;
+  grid-template-columns: [c1] 100px [c2] 100px [c3] auto [c4];
+  grid-template-rows: [r1] 100px [r2] 100px [r3] auto [r4];
+}
+</code></pre><h3 id="39-grid-row-gap-grid-column-gap-grid-gap-属性">3.9 grid-row-gap、grid-column-gap、grid-gap 属性 </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.container {
+  grid-row-gap: 20px;  // 行间距  new:row-gap
+  grid-column-gap: 20px; // 列间距  new:column-gap
+  grid-gap: &lt;grid-row-gap&gt; &lt;grid-column-gap&gt;;   // 简写 new:gap,两个值相同可以合并成一个
+}
+</code></pre><h3 id="310-grid-template-areas">3.10 grid-template-areas </h3>
+<p>指定‘区域’，由 n 个单元格构成</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-template-areas: 'a b c'
+                       'd e f'
+                       'g h i';
+
+  grid-template-areas: 'a a a'
+                        'b b b'
+                        'c c c';  // 合并写法？？
+}
+</code></pre><blockquote>
+<p>某些区域不需要，用(.)表示；‘区域’命名会影响网格线，自动命名成 <strong>‘元素名’-start</strong>，<strong>‘元素名’-end</strong>。</p>
+</blockquote>
+<h3 id="311-grid-auto-flow-属性">3.11 grid-auto-flow 属性 </h3>
+<p>决定网格内子元素的排序。row，‘先行后列’；colum，‘先列后行’；默认 row</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>&lt;div&gt;1&lt;/div&gt;
+&lt;div&gt;2&lt;/div&gt;
+&lt;div&gt;3&lt;/div&gt;
+&lt;div&gt;4&lt;/div&gt;
+&lt;div&gt;5&lt;/div&gt;
+&lt;div&gt;6&lt;/div&gt;
+&lt;div&gt;7&lt;/div&gt;
+
+x{
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-auto-flow: column;
+}
+
+1 4 7
+2 5
+3 6
+</code></pre><p>除了<em>row</em>与<em>column</em>,还有<strong>row dense</strong>、<strong>column dense</strong>，当指定了某些项之后，剩下的项是否需要尽可能的补齐留白。意味着<em>指定规则&gt;剩余规则</em></p>
+<h3 id="312-justify-items-align-items-place-items-属性">3.12 justify-items、align-items、place-items 属性 </h3>
+<p>对<strong>容器</strong>使用，类似于 flex 规则。 - 容器内的所有单元格，在网格中的表现<br>
+<code>stretch</code> 拉伸，默认值，占满单元格宽度</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.container {
+  justify-items: start | end | center | stretch; // 水平位置
+  align-items: start | end | center | stretch; // 垂直位置
+  place-items: &lt;align-items&gt; &lt;justify-items&gt;; // 上述的合写，忽略第二个值，则与第一个相同
+}
+</code></pre><h3 id="313-justify-content-align-content-place-content-属性">3.13 justify-content、align-content、place-content 属性 </h3>
+<p>对<strong>容器</strong>使用，决定容器内的单元格在容器中的位置，类似于 Flex。</p>
+<ul>
+<li><code>space-around</code> 每个项目两侧间隔相加后相等(项目之间的间隔比项目与容器边框的间隔大一倍) .例：left-项目-right left-项目-right。 around-环绕</li>
+<li><code>space-between</code> 项与项之间的间隔相等(项目与容器边框之间没有间隔)。例：间隔-项目-间隔-项目-间隔。between-在 x 之间</li>
+<li><code>space-evenly</code> 项与项之间间隔相等（项目与容器之间也是同样长度的间隔）。 evenly-均匀</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.container {
+  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
+  align-content: start | end | center | stretch | space-around | space-between | space-evenly;
+}
+</code></pre><p><code>place-content</code> 为<code>align-content</code>和<code>justify-content</code>的合写<br>
+想·</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>place-content: &lt;align-content&gt; &lt;justify-content&gt;; // 忽略第二个值，则视为与第一个值相同
+</code></pre><h3 id="314-grid-auto-columns-grid-auto-rows-属性">3.14 grid-auto-columns、grid-auto-rows 属性 </h3>
+<p>有的时候，需要指定一些单元格在现有网格的外部（调皮的孩子），这个时候浏览器会自动生成多余的网格以便放置项目</p>
+<p>而<code>grid-auto-columns</code>、<code>grid-auto-rows</code>就是来设置那些特殊单元格<strong>所在的行高列宽</strong>。写法与<code>grid-template-columns</code>、<code>grid-template-rows</code>完全一致</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-auto-rows: 50px;  // 指定调皮孩子所在的行高
+}
+
+// 调皮孩子
+.item-x{
+  grid-row-start: 4; // 它在占据第几行 end表示在第几行结束
+  grid-column-start: 2; // 所占据的第几列
+}
+</code></pre><h3 id="315-grid-template-grid-属性">3.15 grid-template、grid 属性 </h3>
+<ul>
+<li>
+<p><code>grid-template</code> 是<code>grid-template-columns</code>、<code>grid-template-rows</code>和<code>grid-template-areas</code>的合写</p>
+</li>
+<li>
+<p><code>grid</code> 是<code>grid-template-rows</code>、<code>grid-template-columns</code>和<code>grid-template-areas</code>、<code>grid-auto-rows</code>、<code>grid-auto-columns</code>、<code>grid-auto-flow</code>的合写</p>
+</li>
+</ul>
+<h2 id="四项目属性">四，项目属性 </h2>
+<h3 id="41-grid-column-start-grid-column-end-grid-row-start-grid-row-end-属性">4.1 grid-column-start、grid-column-end、grid-row-start、grid-row-end 属性 </h3>
+<p>用于指定项目定位在哪根网格线</p>
+<ul>
+<li>grid-column-start 属性：左边框所在的垂直网格线</li>
+<li>grid-column-end 属性：右边框所在的垂直网格线</li>
+<li>grid-row-start 属性：上边框所在的水平网格线</li>
+<li>grid-row-end 属性：下边框所在的水平网格线</li>
+</ul>
+<p>也能指定网格线名称；<strong>span</strong>关键词表示‘跨越’，即左右边框（上下边框）之间跨越多少个网格。使用<code>z-index</code>解决重叠顺序问题。</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>  grid-column-start: header-start;
+  grid-column-end: header-end;
+
+  grid-column-start: span 2; // 横跨2列
+  grid-column-end: span 2; // 等同上面的效果
+</code></pre><h3 id="42-grid-column-grid-row-属性">4.2 grid-column、grid-row 属性 </h3>
+<ul>
+<li><code>grid-column</code>属性是<code>grid-column-start</code>和<code>grid-column-end</code>的简写</li>
+<li><code>grid-row</code>属性是<code>grid-row-start</code>和<code>grid-row-end</code>的简写</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.item {
+  grid-column: &lt;start-line&gt; / &lt;end-line&gt;;
+  grid-row: &lt;start-line&gt; / &lt;end-line&gt;;  // 无参数二，则视为同参数一  1，默认跨一个网格
+}
+</code></pre><h3 id="43-grid-area-属性">4.3 grid-area 属性 </h3>
+<p><code>grid-area</code>属性指定项目的区域，类似于定位;同时，它也是<code>grid-row-start</code>、<code>grid-column-start</code>、<code>grid-row-end</code>、<code>grid-column-end</code>的简写</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.item-1 {
+  grid-area: e; // item-1 则位于e区
+  grid-area: &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;  // 简写，例：grid-area: 1 / 1 / 3 / 3;
+}
+</code></pre><h3 id="44-justify-self-align-self-place-self-属性">4.4 justify-self、align-self、place-self 属性 </h3>
+<p>例如，容器内的所有项目表现为【在网格中位于 center 位置】，单独给【某个坏孩子项目设置 start】，它则独自位于 start；默认 stretch，拉伸至整个单元格宽度</p>
+<ul>
+<li><code>justify-self</code> 设置单元格内容的水平位置（左中右） 同<code>justify-items</code>,仅作用于单个项目</li>
+<li><code>align-self</code> 设置单元格内容的垂直位置（上中下） 同<code>align-items</code>,仅作用于单个项目</li>
+<li><code>place-self</code> 以上属性的合并简写</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.item {
+  justify-self: start | end | center | stretch;
+  align-self: start | end | center | stretch;
+  place-self: &lt;align-self&gt; &lt;justify-self&gt;; // 合并简写。无参数二，则视为同参数一
+}
+</code></pre><h2 id="五实战举例">五，实战举例 </h2>
+<p><a href="https://zhuanlan.zhihu.com/p/354671197">https://zhuanlan.zhihu.com/p/354671197</a><br>
+<a href="https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html">https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html</a> 阮一峰<br>
+<a href="https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/">https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/</a></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
