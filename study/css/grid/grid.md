@@ -59,6 +59,8 @@ display: inline-grid;   // 指定容器为行内元素&网格
 
 ### 3.2.2 auto-fill 关键字
 
+根据*项目数量*自动填充，不会超过*容器*宽度
+
 ```
 .container {
   display: grid;
@@ -66,7 +68,15 @@ display: inline-grid;   // 指定容器为行内元素&网格
 }
 ```
 
-> auto-fit 自动扩大单元格宽度，类似于 auto-fill
+> `auto-fill`自填充，但是会产生留白，`auto-fit`自适应，会自动扩大单元格宽度；
+> 它必须搭配`repeat()`以及`minmax()`,适用于响应式布局
+
+```
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px , 1fr) );  //
+}
+```
 
 ### 3.2.3 fr 关键字
 
@@ -107,6 +117,11 @@ grid-template-columns:  100px auto 100px;
 ```
 
 ### 3.9 grid-row-gap、grid-column-gap、grid-gap 属性
+
+new:
+
+- `row-gap`
+- `column-gap`
 
 ```
 .container {
@@ -299,3 +314,4 @@ place-content: <align-content> <justify-content>; // 忽略第二个值，则视
 https://zhuanlan.zhihu.com/p/354671197
 https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html 阮一峰
 https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
+https://article.juejin.cn/post/7250356693767471160 auto-fill&auto-fit 的区别以及适用场景
