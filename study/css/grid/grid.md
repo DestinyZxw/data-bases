@@ -80,7 +80,9 @@ display: inline-grid;   // 指定容器为行内元素&网格
 
 ### 3.2.3 fr 关键字
 
-fraction-片段，表示比例关系。如果两列的宽度分别为 1fr 和 2fr，就表示后者是前者的两倍
+fraction-片段，表示比例关系。如果两列的宽度分别为 1fr 和 2fr，就表示后者是前者的两倍；// 
+> fr -greedy（贪婪），会自动占据剩下的位置
+> auto -shy (保守) ，自适应
 
 ```
 .container {
