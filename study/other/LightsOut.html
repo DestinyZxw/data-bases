@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lights Out - 5x5</title>
+<style>
+  body {font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; display:flex; flex-direction:column; align-items:center; padding:24px;}
+  h1 {margin:0 0 12px;}
+  #board {display:grid; gap:6px; margin:16px 0;}
+  .cell {width:56px; height:56px; display:flex; align-items:center; justify-content:center; cursor:pointer; user-select:none; border-radius:6px; box-shadow:0 1px 2px rgba(0,0,0,0.15);}
+  .on {background: #ffd54f; color:#222;}
+  .off {background: #263238; color:#fff;}
+  .pressed {outline:3px solid rgba(0,150,136,0.35);}
+  .controls {display:flex; gap:8px; flex-wrap:wrap;}
+  button {padding:8px 12px; border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer;}
+  #msg {margin-top:12px; min-height:1.2em;}
+  small {color:#666;}
+</style>
+</head>
+<body>
+
+<h1>Lights Out (5×5)</h1>
+<div class="controls">
+  <button id="randomBtn">随机布局</button>
+  <button id="resetBtn">重置（全开）</button>
+  <button id="solveBtn">求解</button>
+  <button id="applyBtn">应用解（若存在）</button>
+  <label><small>网格：</small>
+    <select id="sizeSelect">
+      <option value="5" selected>5 × 5</option>
+      <option value="3">3 × 3</option>
+      <option value="4">4 × 4</option>
+      <option value="6">6 × 6</option>
+    </select>
+  </label>
+</div>
+
+<div id="board"></div>
+<div id="msg"></div>
+
+<script>
+/*
+  Lights Out implementation + solver with Gaussian elimination over GF(2).
+  - 点击格子会切换自己与上下左右的灯（经典规则）
+  - Solve -> 求解按下序列（A * x = b mod 2）
+  - Apply -> 自动按解（并能高亮）
+*/
+
+const boardEl = document.getElementById('board');
+const randomBtn = document.getElementById('randomBtn');
+const resetBtn = document.getElementById('resetBtn');
+const solveBtn = document.getElementById('solveBtn');
+const applyBtn = document.getElementById('applyBtn');
+const msg = document.getElementById('msg');
+const sizeSelect = document.getElementById('sizeSelect');
+
+let size = parseInt(sizeSelect.value, 10);
+let cells = []; // boolean grid: true = on
+let solution = null; // array of 0/1 moves if solvable
+
+function initGrid(n) {
+  size = n;
+  boardEl.style.gridTemplateColumns = `repeat(${n}, auto)`;
+  boardEl.innerHTML = '';
+  cells = new Array(n * n).fill(true); // 默认全开（true 表示灯亮）
+  for (let i = 0; i < n * n; i++) {
+    const div = document.createElement('div');
+    div.className = 'cell on';
+    div.dataset.idx = i;
+    div.addEventListener('click', () => {
+      pressCell(i);
+      render();
+      solution = null; // 状态改变后清除之前解
+      setMsg('');
+    });
+    boardEl.appendChild(div);
+  }
+  render();
+  solution = null;
+  setMsg('');
+}
+
+function idxToRC(i) { return [Math.floor(i / size), i % size]; }
+function rcToIdx(r,c){ return r*size + c; }
+
+function inBounds(r,c){ return r>=0 && r<size && c>=0 && c<size; }
+
+// 按下某个格子（逻辑不考虑 UI）
+function toggleAt(i) {
+  const [r,c] = idxToRC(i);
+  const pts = [[r,c],[r-1,c],[r+1,c],[r,c-1],[r,c+1]];
+  for (const [rr,cc] of pts) {
+    if (inBounds(rr,cc)) {
+      const j = rcToIdx(rr,cc);
+      cells[j] = !cells[j];
+    }
+  }
+}
+
+// 用户点击：也记录为真实按下
+function pressCell(i){
+  toggleAt(i);
+}
+
+// 渲染 UI
+function render(highlightMoves=null) {
+  const childs = boardEl.children;
+  for (let i=0;i<childs.length;i++){
+    const el = childs[i];
+    el.classList.toggle('on', !!cells[i]);
+    el.classList.toggle('off', !cells[i]);
+    el.classList.toggle('pressed', highlightMoves && highlightMoves[i]);
+    el.textContent = i; // 显示索引，便于调试或理解
+  }
+}
+
+// 设置消息
+function setMsg(s){ msg.textContent = s; }
+
+// 随机布局
+function randomize(){
+  for (let i=0;i<cells.length;i++){
+    cells[i] = Math.random() < 0.5;
+  }
+  render();
+  solution = null;
+  setMsg('已随机生成布局');
+}
+
+// 重置为全部点亮（或者全灭也可以，选择这里全部点亮）
+function resetAllOn(){
+  for (let i=0;i<cells.length;i++) cells[i] = true;
+  render();
+  solution = null;
+  setMsg('已重置为全部点亮');
+}
+
+// 构造矩阵 A (n*n x n*n) 与向量 b（当前灯状态），并用 GF(2) 高斯消元求解 x
+function solveGF2() {
+  const N = size * size;
+  // Build augmented matrix: rows N, columns N+1
+  // Each row is an array of 0/1 length N+1
+  const mat = Array.from({length: N}, (_, i) => {
+    const row = new Array(N+1).fill(0);
+    // pressing j affects neighbours including itself => set column j in row i if pressing j toggles cell i
+    // But easier: for each column j, if j==i or j neighbor of i => A[i][j] = 1
+    const [r,c] = idxToRC(i);
+    const neighbors = [[r,c],[r-1,c],[r+1,c],[r,c-1],[r,c+1]];
+    for (const [rr,cc] of neighbors) {
+      if (inBounds(rr,cc)) {
+        const j = rcToIdx(rr,cc);
+        row[j] = 1;
+      }
+    }
+    // RHS is current state (we want to turn all lights OFF -> solve A*x = b where b = current lights (1=on))
+    row[N] = cells[i] ? 1 : 0;
+    return row;
+  });
+
+  // Gaussian elimination mod 2
+  let rank = 0;
+  const where = new Array(N).fill(-1);
+  for (let col=0; col<N && rank<N; col++){
+    // find pivot row with mat[row][col] == 1 at or below rank
+    let sel = -1;
+    for (let row=rank; row<N; row++){
+      if (mat[row][col] === 1) { sel = row; break; }
+    }
+    if (sel === -1) continue;
+    // swap
+    [mat[rank], mat[sel]] = [mat[sel], mat[rank]];
+    where[col] = rank;
+
+    // eliminate other rows
+    for (let row=0; row<N; row++){
+      if (row !== rank && mat[row][col] === 1) {
+        // row = row XOR rank
+        for (let c=col; c<=N; c++){
+          mat[row][c] ^= mat[rank][c];
+        }
+      }
+    }
+    rank++;
+  }
+
+  // check for inconsistency: 0 = 1 rows
+  for (let row=rank; row<N; row++){
+    let allzero = true;
+    for (let c=0;c<N;c++) if (mat[row][c]) { allzero = false; break; }
+    if (allzero && mat[row][N] === 1) {
+      return { solvable:false, solution:null };
+    }
+  }
+
+  // get one solution (set free vars = 0)
+  const x = new Array(N).fill(0);
+  for (let i=0;i<N;i++){
+    if (where[i] !== -1) {
+      x[i] = mat[where[i]][N];
+    } else {
+      x[i] = 0; // free variable - choose 0
+    }
+  }
+
+  return { solvable:true, solution:x };
+}
+
+// Apply solution moves to board (press where solution[i] == 1)
+function applySolution(sol){
+  if (!sol) return;
+  const moves = [];
+  for (let i=0;i<sol.length;i++){
+    if (sol[i]) {
+      toggleAt(i);
+      moves.push(i);
+    }
+  }
+  render();
+  setMsg(`已应用 ${moves.length} 次按键：${moves.join(', ')}`);
+}
+
+// 按钮绑定
+randomBtn.addEventListener('click', () => {
+  randomize();
+});
+resetBtn.addEventListener('click', () => {
+  resetAllOn();
+});
+solveBtn.addEventListener('click', () => {
+  const res = solveGF2();
+  if (!res.solvable) {
+    solution = null;
+    setMsg('无解（该状态在当前规则下不可达）');
+    render();
+  } else {
+    solution = res.solution;
+    // 高亮将要按的格子
+    const highlight = solution.map(v => !!v);
+    render(highlight);
+    const count = solution.reduce((s,v)=>s+v,0);
+    setMsg(`找到解：需要按 ${count} 次（高亮显示）。点击“应用解”可执行。`);
+  }
+});
+applyBtn.addEventListener('click', () => {
+  if (!solution) { setMsg('当前没有解（先点击“求解”）'); return; }
+  applySolution(solution);
+  solution = null;
+});
+
+// 尺寸切换
+sizeSelect.addEventListener('change', () => {
+  const n = parseInt(sizeSelect.value, 10);
+  initGrid(n);
+});
+
+// 初始化默认网格
+initGrid(size);
+
+// 额外快捷键：空格随机，S 求解
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    randomize();
+  } else if (e.key.toLowerCase() === 's') {
+    solveBtn.click();
+  }
+});
+</script>
+
+</body>
+</html>
